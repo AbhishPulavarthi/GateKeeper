@@ -6,16 +6,20 @@ GateKeeper is a Python-based TCP port scanner built as part of my cybersecurity 
 
 ## Overview
 
-GateKeeper scans a target host to determine whether a specific TCP port is open or closed. It supports both IPv4 addresses and domain names by resolving domain names into IP addresses before attempting a TCP connection.
+GateKeeper scans a target host to identify open TCP ports. It supports both IPv4 addresses and domain names by resolving domain names into IP addresses before performing TCP connection attempts across a user-defined range of ports.
+
+This version expands the scanner from checking a single port to scanning multiple ports, making it a more practical network reconnaissance tool while continuing to focus on learning the fundamentals of networking and socket programming.
 
 ---
 
-## Current Features (v0.2)
+## Current Features (v0.3)
 
-- Scan a single TCP port
+- Scan a user-defined range of TCP ports
 - Supports IPv4 addresses
 - Supports domain names (DNS resolution)
-- Detects whether a port is OPEN or CLOSED
+- Detects open TCP ports
+- Displays all discovered open ports
+- Displays the total number of open ports found
 - Configurable connection timeout
 - Clean command-line interface
 - Uses Python's built-in `socket` module
@@ -25,7 +29,8 @@ GateKeeper scans a target host to determine whether a specific TCP port is open 
 ## Technologies Used
 
 - Python 3
-- socket
+- Python Socket Library
+- TCP Networking
 
 ---
 
@@ -33,38 +38,68 @@ GateKeeper scans a target host to determine whether a specific TCP port is open 
 
 ```text
 =============================================
-             GATEKEEPER v0.2
+        GateKeeper
+     TCP Port Scanner v0.3
 =============================================
 
-Enter Target (IP or Domain): google.com
-Enter Target Port          : 443
+Enter Target (IP or Domain): openai.in
+Give start port number : 443
+Give end port number   : 445
+
+Target IP : 172.67.161.68
 
 Scan Result
 ------------------------------
-[OPEN] Port 443
+Open Ports
+[OPEN] 443
+------------------------------
+Scan Completed
+Open Ports Found : 1
 ```
 
 ---
 
 ## Current Version
 
-**GateKeeper v0.2**
+**GateKeeper v0.3**
+
+---
+
+## What's New in v0.3
+
+- Added TCP port range scanning
+- Improved output formatting
+- Added scan completion summary
+- Displays total number of open ports found
+- Improved variable naming and overall code readability
+- Reduced scan timeout for faster execution
 
 ---
 
 ## Planned Features
 
-- Scan a range of TCP ports
-- Display common service names (HTTP, HTTPS, SSH, FTP, etc.)
-- Better input validation and exception handling
+- Better input validation
+- Exception handling
+- Service detection
 - Banner grabbing
-- Scan summaries
 - Multithreaded scanning
 - Export scan reports
 - IPv6 support
+- Command-line arguments
+- Performance optimizations
 
 ---
 
 ## Purpose
 
-This project is part of my Resume Sprint and cybersecurity learning roadmap. Each version introduces new networking concepts while following good software engineering practices such as version control, documentation, and incremental development.
+This project is part of my cybersecurity learning roadmap and portfolio development. Each version introduces new networking concepts while following software engineering practices such as incremental development, documentation, and version control.
+
+The long-term goal of GateKeeper is to evolve from a basic TCP port scanner into a more capable network reconnaissance tool by implementing progressively advanced networking concepts.
+
+---
+
+## Disclaimer
+
+This project is intended for educational purposes only.
+
+Only scan systems that you own or have explicit permission to test.
