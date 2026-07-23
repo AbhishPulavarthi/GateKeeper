@@ -1,105 +1,136 @@
-# GateKeeper
+# GateKeeper v0.4 - TCP Port Scanner
 
-GateKeeper is a Python-based TCP port scanner built as part of my cybersecurity learning journey. It is designed to help understand how network communication, sockets, TCP connections, and port scanning work through practical implementation.
+GateKeeper is a Python-based TCP port scanner developed as part of my cybersecurity learning journey. It scans a specified range of TCP ports on a target host, identifies open ports, and displays the commonly associated network service for each open port using a built-in service mapping dictionary.
 
----
-
-## Overview
-
-GateKeeper scans a target host to identify open TCP ports. It supports both IPv4 addresses and domain names by resolving domain names into IP addresses before performing TCP connection attempts across a user-defined range of ports.
-
-This version expands the scanner from checking a single port to scanning multiple ports, making it a more practical network reconnaissance tool while continuing to focus on learning the fundamentals of networking and socket programming.
+This project focuses on understanding core networking concepts such as IP addressing, TCP connections, ports, sockets, and service identification while applying them through hands-on development.
 
 ---
 
-## Current Features (v0.3)
+## Features
 
 - Scan a user-defined range of TCP ports
-- Supports IPv4 addresses
-- Supports domain names (DNS resolution)
-- Detects open TCP ports
-- Displays all discovered open ports
-- Displays the total number of open ports found
-- Configurable connection timeout
-- Clean command-line interface
-- Uses Python's built-in `socket` module
+- Accept both domain names and IP addresses as targets
+- Automatically resolve domain names to IPv4 addresses
+- Detect open TCP ports using Python sockets
+- Identify common network services using a built-in port-to-service dictionary
+- Display results in a clean, tabular format
+- Count and display the total number of open ports found
+- Simple command-line interface
 
 ---
 
 ## Technologies Used
 
 - Python 3
-- Python Socket Library
+- socket module
 - TCP Networking
+- Dictionary-based Service Identification
 
 ---
 
-## Example
+## Project Structure
+
+```
+GateKeeper/
+│
+├── main.py
+├── README.md
+└── .gitignore
+```
+
+---
+
+## How It Works
+
+1. The user enters a target domain or IP address.
+2. The program resolves the target to an IPv4 address.
+3. A start and end port are provided.
+4. GateKeeper attempts to establish a TCP connection to every port in the specified range.
+5. If a connection succeeds, the port is marked as **OPEN**.
+6. The scanner looks up the port number in its internal service dictionary.
+7. The results are displayed in a formatted table.
+
+---
+
+## Example Output
 
 ```text
 =============================================
         GateKeeper
-     TCP Port Scanner v0.3
+     TCP Port Scanner v0.4
 =============================================
 
-Enter Target (IP or Domain): openai.in
-Give start port number : 443
-Give end port number   : 445
+Enter Target (IP or Domain): scanme.nmap.org
+Give start port number : 20
+Give end port number   : 100
 
-Target IP : 172.67.161.68
+Target IP: 45.33.xxx.xxx
 
 Scan Result
-------------------------------
-Open Ports
-[OPEN] 443
-------------------------------
+-----------------------------------
+
+Port    Status    Service
+-----------------------------------
+22      OPEN      SSH
+80      OPEN      HTTP
+-----------------------------------
 Scan Completed
-Open Ports Found : 1
+Open Ports Found : 2
 ```
+
+---
+
+## Concepts Practiced
+
+- TCP/IP Networking
+- IPv4 Address Resolution
+- DNS Lookup
+- Socket Programming
+- Port Scanning
+- TCP Three-Way Handshake (Connection Attempt)
+- Python Dictionaries
+- Loops
+- Conditional Statements
+- Formatted Console Output
 
 ---
 
 ## Current Version
 
-**GateKeeper v0.3**
+**Version:** v0.4
+
+### Implemented
+
+- TCP Port Scanning
+- User-defined Port Range
+- Domain Name Resolution
+- Open Port Detection
+- Service Identification
+- Formatted Output
 
 ---
 
-## What's New in v0.3
+## Planned Improvements
 
-- Added TCP port range scanning
-- Improved output formatting
-- Added scan completion summary
-- Displays total number of open ports found
-- Improved variable naming and overall code readability
-- Reduced scan timeout for faster execution
-
----
-
-## Planned Features
-
-- Better input validation
-- Exception handling
-- Service detection
-- Banner grabbing
-- Multithreaded scanning
-- Export scan reports
-- IPv6 support
-- Command-line arguments
-- Performance optimizations
+- Banner Grabbing
+- Multi-threaded Scanning
+- Exception Handling Improvements
+- Scan Time Measurement
+- Export Scan Results
+- Command-line Arguments
+- IPv6 Support
 
 ---
 
-## Purpose
+## Learning Purpose
 
-This project is part of my cybersecurity learning roadmap and portfolio development. Each version introduces new networking concepts while following software engineering practices such as incremental development, documentation, and version control.
-
-The long-term goal of GateKeeper is to evolve from a basic TCP port scanner into a more capable network reconnaissance tool by implementing progressively advanced networking concepts.
+This project was built for educational purposes to strengthen my understanding of computer networking, Python programming, and cybersecurity fundamentals. It is part of my hands-on learning roadmap toward becoming a cybersecurity professional.
 
 ---
 
-## Disclaimer
+## Author
 
-This project is intended for educational purposes only.
+**Abhish Pulavarthi**
 
-Only scan systems that you own or have explicit permission to test.
+B.Tech Computer Science and Engineering (Cyber Security)  
+SRM Institute of Science and Technology

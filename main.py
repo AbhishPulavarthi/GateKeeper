@@ -1,8 +1,12 @@
 import socket
+services = {
+    20: "FTP (Data)",21: "FTP",22: "SSH",23: "Telnet",25: "SMTP",53: "DNS",80: "HTTP",110: "POP3",143: "IMAP",443: "HTTPS",445: "SMB",
+    3306: "MySQL",3389: "RDP",5432: "PostgreSQL",8080: "HTTP-Alt"
+}
 
 print("=" * 45)
 print("        GateKeeper")
-print("     TCP Port Scanner v0.3")
+print("     TCP Port Scanner v0.4")
 print("=" * 45)
 
 target = input("\nEnter Target (IP or Domain): ").strip()
@@ -21,12 +25,16 @@ for port in range(start_port, end_port+1) :
     if result == 0:
         open_ports.append(port)
     scanner.close()
-print("Open Ports")
 if len(open_ports) == 0:
     print("No open ports found.")
 else:
+    print(f"\n{'Port':<8}{'Status':<10}{'Service'}")
+    print("-" * 35)
+
     for port in open_ports:
-        print(f"[OPEN] {port}")
-print("-" * 30)
+        service_name = services.get(port, "Unknown")
+        print(f"{port:<8}{'OPEN':<10}{service_name}")
+
+print("-" * 35)
 print("Scan Completed")
 print(f"Open Ports Found : {len(open_ports)}")
