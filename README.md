@@ -1,136 +1,102 @@
-# GateKeeper v0.4 - TCP Port Scanner
+# GateKeeper
 
-GateKeeper is a Python-based TCP port scanner developed as part of my cybersecurity learning journey. It scans a specified range of TCP ports on a target host, identifies open ports, and displays the commonly associated network service for each open port using a built-in service mapping dictionary.
+A lightweight TCP Port Scanner built in Python as part of my cybersecurity learning journey.
 
-This project focuses on understanding core networking concepts such as IP addressing, TCP connections, ports, sockets, and service identification while applying them through hands-on development.
+Current Version: **v0.5**
 
+---
+
+## Overview
+
+GateKeeper is a command-line TCP port scanner that discovers open ports on a target host and attempts basic service identification and banner grabbing.
+
+This project is under active development as part of my cybersecurity learning journey. New features will be added incrementally while focusing on understanding networking concepts and secure software development.
 ---
 
 ## Features
 
-- Scan a user-defined range of TCP ports
-- Accept both domain names and IP addresses as targets
-- Automatically resolve domain names to IPv4 addresses
-- Detect open TCP ports using Python sockets
-- Identify common network services using a built-in port-to-service dictionary
-- Display results in a clean, tabular format
-- Count and display the total number of open ports found
-- Simple command-line interface
+- TCP Port Scanning
+- User-defined port range
+- Domain name to IPv4 resolution
+- Open port detection using TCP sockets
+- Common service identification
+- Basic banner grabbing
+- Timeout handling
+- Exception handling
+- Formatted scan results
 
 ---
 
 ## Technologies Used
 
 - Python 3
-- socket module
+- socket
 - TCP Networking
-- Dictionary-based Service Identification
 
 ---
 
-## Project Structure
+## Current Workflow
 
-```
-GateKeeper/
-│
-├── main.py
-├── README.md
-└── .gitignore
-```
-
----
-
-## How It Works
-
-1. The user enters a target domain or IP address.
-2. The program resolves the target to an IPv4 address.
-3. A start and end port are provided.
-4. GateKeeper attempts to establish a TCP connection to every port in the specified range.
-5. If a connection succeeds, the port is marked as **OPEN**.
-6. The scanner looks up the port number in its internal service dictionary.
-7. The results are displayed in a formatted table.
+1. Enter a target IP address or domain.
+2. Specify the starting and ending port.
+3. Scan each TCP port.
+4. Identify open ports.
+5. Match common services.
+6. Attempt banner grabbing.
+7. Display results in a formatted table.
 
 ---
 
-## Example Output
+## Sample Output
 
 ```text
 =============================================
         GateKeeper
-     TCP Port Scanner v0.4
+     TCP Port Scanner v0.5
 =============================================
 
-Enter Target (IP or Domain): scanme.nmap.org
-Give start port number : 20
-Give end port number   : 100
+Enter Target (IP or Domain): example.com
 
-Target IP: 45.33.xxx.xxx
+Port    Status    Service        Banner
+---------------------------------------------------------------
+22      OPEN      SSH            SSH-2.0-OpenSSH_9.9
+80      OPEN      HTTP           Unknown
+443     OPEN      HTTPS          Unknown
 
-Scan Result
------------------------------------
-
-Port    Status    Service
------------------------------------
-22      OPEN      SSH
-80      OPEN      HTTP
------------------------------------
+---------------------------------------------------------------
 Scan Completed
-Open Ports Found : 2
+Open Ports Found : 3
 ```
 
 ---
 
-## Concepts Practiced
+## Current Limitations
 
-- TCP/IP Networking
-- IPv4 Address Resolution
-- DNS Lookup
-- Socket Programming
-- Port Scanning
-- TCP Three-Way Handshake (Connection Attempt)
-- Python Dictionaries
-- Loops
-- Conditional Statements
-- Formatted Console Output
+- HTTP servers generally require a request before sending data.
+- HTTPS banner grabbing is not yet implemented.
+- Only basic TCP scanning is supported.
+- No multithreading yet.
+- No UDP scanning.
+- No OS detection.
 
 ---
 
-## Current Version
+## Learning Outcomes
 
-**Version:** v0.4
+This version focuses on understanding:
 
-### Implemented
-
-- TCP Port Scanning
-- User-defined Port Range
-- Domain Name Resolution
-- Open Port Detection
-- Service Identification
-- Formatted Output
-
----
-
-## Planned Improvements
-
-- Banner Grabbing
-- Multi-threaded Scanning
-- Exception Handling Improvements
-- Scan Time Measurement
-- Export Scan Results
-- Command-line Arguments
-- IPv6 Support
-
----
-
-## Learning Purpose
-
-This project was built for educational purposes to strengthen my understanding of computer networking, Python programming, and cybersecurity fundamentals. It is part of my hands-on learning roadmap toward becoming a cybersecurity professional.
-
----
+- TCP sockets
+- Client-server communication
+- Port scanning
+- Socket timeouts
+- Exception handling
+- Banner grabbing concepts
+- Service identification
+- Python list indexing and iteration
 
 ## Author
 
 **Abhish Pulavarthi**
 
-B.Tech Computer Science and Engineering (Cyber Security)  
+Cybersecurity Student  
 SRM Institute of Science and Technology
