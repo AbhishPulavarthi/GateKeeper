@@ -26,8 +26,28 @@ for port in range(start_port, end_port+1) :
     if result == 0:
         open_ports.append(port)
         try:
-            banner=scanner.recv(1024).decode()
-            banner_List.append(banner)
+            if port ==80:
+                request_message = (
+                 f"GET / HTTP/1.1\r\n"
+                 f"Host: {target}\r\n"
+                 f"Connection: close\r\n\r\n"
+                 )
+                scanner.send(request_message.encode())
+                banner=scanner.recv(4096).decode()
+                lines = banner.split("\r\n")
+                server_banner = "Unknown"
+                for line in lines:
+                    if line.startswith("Server:"):
+                        parts = line.split(":", 1)
+                        if len(parts) > 1:
+                            server_banner = parts[1].strip()
+                        else:
+                            server_banner = line
+                        break
+                banner_List.append(server_banner)
+            else:
+                banner=scanner.recv(1024).decode()
+                banner_List.append(banner.strip())
         except Exception:
             banner_List.append('Unknown')
         

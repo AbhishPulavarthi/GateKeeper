@@ -1,102 +1,153 @@
-# GateKeeper
+# GateKeeper v0.6
 
-A lightweight TCP Port Scanner built in Python as part of my cybersecurity learning journey.
+GateKeeper is a Python-based TCP port scanner developed as a personal learning project to understand networking, socket programming, and service enumeration. The project is built from scratch with a focus on learning how network scanners work rather than relying on external libraries.
 
-Current Version: **v0.5**
+> **Note:** This project is intended for educational purposes and should only be used on systems you own or have permission to test.
 
----
-
-## Overview
-
-GateKeeper is a command-line TCP port scanner that discovers open ports on a target host and attempts basic service identification and banner grabbing.
-
-This project is under active development as part of my cybersecurity learning journey. New features will be added incrementally while focusing on understanding networking concepts and secure software development.
 ---
 
 ## Features
 
-- TCP Port Scanning
-- User-defined port range
-- Domain name to IPv4 resolution
-- Open port detection using TCP sockets
-- Common service identification
-- Basic banner grabbing
-- Timeout handling
-- Exception handling
-- Formatted scan results
+- Scan a custom range of TCP ports
+- Detect open and closed TCP ports
+- Resolve domain names to IPv4 addresses
+- Identify common services using well-known port numbers
+- Perform basic TCP banner grabbing
+- Send HTTP requests to web servers
+- Parse HTTP responses and extract the `Server` header
+- Display scan results in a clean terminal table
 
 ---
 
-## Technologies Used
-
-- Python 3
-- socket
-- TCP Networking
-
----
-
-## Current Workflow
-
-1. Enter a target IP address or domain.
-2. Specify the starting and ending port.
-3. Scan each TCP port.
-4. Identify open ports.
-5. Match common services.
-6. Attempt banner grabbing.
-7. Display results in a formatted table.
-
----
-
-## Sample Output
+## Example Output
 
 ```text
 =============================================
         GateKeeper
-     TCP Port Scanner v0.5
+     TCP Port Scanner v0.6
 =============================================
 
-Enter Target (IP or Domain): example.com
+Enter Target (IP or Domain): google.com
+Give start port number : 79
+Give end port number   : 80
+
+Target IP: 142.xxx.xxx.xxx
+
+Scan Result
+----------------------------------------------------------------------
 
 Port    Status    Service        Banner
----------------------------------------------------------------
-22      OPEN      SSH            SSH-2.0-OpenSSH_9.9
-80      OPEN      HTTP           Unknown
-443     OPEN      HTTPS          Unknown
+----------------------------------------------------------------------
+80      OPEN      HTTP           gws
+----------------------------------------------------------------------
 
----------------------------------------------------------------
 Scan Completed
-Open Ports Found : 3
+Open Ports Found : 1
 ```
 
 ---
 
-## Current Limitations
+## Built With
 
-- HTTP servers generally require a request before sending data.
-- HTTPS banner grabbing is not yet implemented.
-- Only basic TCP scanning is supported.
-- No multithreading yet.
-- No UDP scanning.
-- No OS detection.
+- Python 3
+- Socket Programming
+- TCP Networking
+- DNS Resolution (`socket.gethostbyname`)
+- Basic HTTP Protocol
 
 ---
 
-## Learning Outcomes
+## Current Capabilities
 
-This version focuses on understanding:
+- TCP Connect Scan
+- Domain Name Resolution
+- Common Service Identification
+- TCP Banner Grabbing
+- HTTP GET Request
+- HTTP `Server` Header Extraction
 
-- TCP sockets
-- Client-server communication
-- Port scanning
-- Socket timeouts
-- Exception handling
-- Banner grabbing concepts
-- Service identification
-- Python list indexing and iteration
+---
+
+## Project Structure
+
+```text
+GateKeeper/
+├── main.py          # Main scanner logic
+├── services.py      # Common service definitions
+└── README.md
+```
+
+---
+
+## Version History
+
+### v0.6 – HTTP-Aware Banner Parsing
+
+- Added HTTP GET request support
+- Implemented HTTP-aware banner grabbing
+- Extracted the HTTP `Server` header
+- Improved banner parsing for cleaner output
+
+### v0.5 – TCP Banner Grabbing
+
+- Implemented TCP connect scanning
+- Added banner grabbing
+- Added common service identification
+- Added domain name resolution
+
+---
+
+## Roadmap
+
+### Networking
+
+- UDP port scanning
+- IPv6 support
+- Configurable timeout
+
+### Performance
+
+- Multi-threaded scanning
+
+### Protocol Support
+
+- HTTPS support
+- SSH banner parser
+- FTP banner parser
+- SMTP banner parser
+
+### Output
+
+- Export results to JSON
+- Export results to CSV
+- Command-line arguments
+
+---
+
+## Requirements
+
+- Python 3.10 or later
+- No external dependencies
+
+---
+
+## Learning Objectives
+
+This project is helping me gain practical experience with:
+
+- Computer Networking
+- TCP/IP
+- Socket Programming
+- Service Enumeration
+- Banner Grabbing
+- Protocol Analysis
+- Cybersecurity Fundamentals
+
+---
 
 ## Author
 
 **Abhish Pulavarthi**
 
-Cybersecurity Student  
-SRM Institute of Science and Technology
+Cybersecurity Undergraduate  
+SRM Institute of Science and Technology (SRMIST)
